@@ -36,6 +36,10 @@ export class BoardsController {
     // deleteBoard(@Param('id') id: string): void {
     //     this.boardService.deleteBoard(id);
     // }
+    @Delete('/:id')
+    deleteBoard(@Param('id') id: number): void {
+        this.boardService.deleteBoard(id);
+    }
 
     // @Patch('/:id/status')
     // updateBoardStatus(
