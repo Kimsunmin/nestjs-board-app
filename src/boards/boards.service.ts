@@ -32,6 +32,10 @@ export class BoardsService {
 
     //     return board;
     // }
+
+    createBoard(createBoardDto: CreateBoardDto): Promise<Board> {
+        return this.boardRepository.createBoard(createBoardDto);
+    }
     
     // getBoardById(id: string): Board {
     //     const found = this.boards.find( board => board.id === id );

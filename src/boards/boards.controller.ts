@@ -14,6 +14,11 @@ export class BoardsController {
     //     return this.boardService.getAllBoards();
     // }
 
+    @Get()
+    getAllBoard(): Promise<Board[]> {
+        return this.boardService.getAllBoards();
+    }
+
     // @Post()
     // @UsePipes(ValidationPipe)
     // createBoard(
@@ -21,6 +26,14 @@ export class BoardsController {
     // ): Board {
     //     return this.boardService.createBoard(createBoardDto);
     // }
+    
+    @Post()
+    @UsePipes(ValidationPipe)
+    createBoard(
+        @Body() createBoard: CreateBoardDto
+    ): Promise<Board> {
+        return this.boardService.createBoard(createBoard);
+    }
 
     // @Get('/:id')
     // getBoardById(@Param('id') id: string): Board {
