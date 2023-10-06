@@ -48,4 +48,12 @@ export class BoardsController {
     // ): Board {
     //     return this.boardService.updateBoardStatus(id, status);
     // }
+
+    @Patch('/:id/status')
+    updateBoardStatus(
+        @Param('id') id: number,
+        @Body('status', BoardStatusValidationPipe) status: BoardStatus
+    ): Promise<Board> {
+        return this.boardService.updateBoardStatus(id, status);
+    }
 }

@@ -4,6 +4,7 @@ import { v1 as uuid} from 'uuid';
 import { CreateBoardDto } from './dto/create-board.dto';
 import { BoardRepository } from './board.repository';
 import { Board } from './board.entity';
+import { UpdateResult } from 'typeorm';
 
 @Injectable()
 export class BoardsService {
@@ -66,5 +67,12 @@ export class BoardsService {
     //     board.status = status;
     //     return board;
     // }
+
+    async updateBoardStatus(id: number, status: BoardStatus): Promise<Board> {
+        const found = await this.getBoardById(id);
+        found.status = status;
+        const result = await this.boardRepository.save(found);
+        return result;
+    }
 }
  
