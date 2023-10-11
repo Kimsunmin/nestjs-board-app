@@ -33,8 +33,8 @@ export class BoardsController {
     }
 
     @Delete('/:id')
-    deleteBoard(@Param('id') id: number): void {
-        this.boardService.deleteBoard(id);
+    deleteBoard(@Param('id') id: number, @GetUser() user: User): void {
+        this.boardService.deleteBoard(id, user);
     }
 
     @Patch('/:id/status')
